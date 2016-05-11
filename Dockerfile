@@ -1,10 +1,14 @@
-FROM haskell:7.10
+FROM ubuntu:16.04
 
 MAINTAINER Achilleas Pipinellis <axilleas@axilleas.me>
 
-RUN wget https://github.com/jgm/pandoc/releases/download/1.17.0.2/pandoc-1.17.0.2-1-amd64.deb
+RUN apt-get update && apt-get install -y wget
 
-RUN dpkg -i pandoc-1.17.0.2-1-amd64.deb
+RUN rm -rf /var/lib/apt/lists
+
+RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/1.17.0.2/pandoc-1.17.0.2-1-amd64.deb
+
+RUN dpkg -i pandoc.deb
 
 ENTRYPOINT ["/usr/bin/pandoc"]
 
