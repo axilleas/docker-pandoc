@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Achilleas Pipinellis <axilleas@axilleas.me>
 
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get install -y wget git ruby
 
 RUN rm -rf /var/lib/apt/lists
 
